@@ -1,0 +1,53 @@
+#scrollUp i,
+.demo-thumb .single-thumb a span,
+.site-header .button:hover,
+.site-header .nav li a::before,
+.site-header .button:before,
+.work .single-work:hover .serial span,
+.main-sidebar .single-widget .title::before,
+.main-sidebar .search .button:hover,
+.main-sidebar .side-tags .tag a:hover,
+.main-sidebar .newsletter .letter-inner .form-inner a,
+.contact-us .single-head.overlay:before,
+.error-page .search-form .btn,
+.section-title h2:before,
+.btn,
+.breadcrumbs,
+.pricing-table .single-table .popular {
+  background: #609960;
+}
+.btn-primary:hover {
+  background: #609960 !important;
+}
+.demo-section.overlay:before,
+.hero-header,
+.get-started {
+  background: linear-gradient(45deg, #609960, #40513b);
+}
+.site-header .social-contact ul li a:hover,
+.site-header .button,
+.home-v3 .owl-carousel .owl-nav div:hover,
+.services-area .short-title,
+.work .single-work .serial span,
+.main-sidebar .categor-list li a:hover,
+.main-sidebar .single-post .content h5 a:hover,
+.contact-us .title h4,
+.contact-us .single-info i,
+.get-started .btn,
+.error-page .error-inner h1,
+.mail-seccess .success-inner h1,
+.footer .single-footer.f-link li a:hover,
+.footer .footer-social li a:hover,
+.footer .single-footer.f-link li a:hover {
+  color: #609960;
+}
+.hero-header .btn:hover,
+.hero-header .btn.primary {
+  color: #609960 !important;
+}
+.preloader-spinner {
+  border-color: #609960;
+}
+.button .btn {
+  color: #edf1d6;
+}

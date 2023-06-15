@@ -1,0 +1,109 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  display: flex;
+  color: #4a4a4a;
+}
+.left {
+  width: 40%;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.logo {
+  position: relative;
+  padding: 20px;
+}
+h1 {
+  color: #3a3a3a;
+  font-size: 25px;
+  text-align: center;
+  margin-top: 40px;
+  letter-spacing: 1px;
+}
+p.center {
+  text-align: center;
+  font-size: 14px;
+  padding: 5px 0;
+}
+.form {
+  width: 50%;
+  margin: 10px auto;
+  padding: 15px;
+}
+.message {
+  font-size: 12px;
+  color: #609966;
+}
+.form input {
+  width: 100%;
+  height: 45px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #4a4a4a;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  padding: 10px;
+  background-color: #ffffff;
+  font-size: 12px;
+  opacity: 0.8;
+}
+.form input::placeholder {
+  font-size: 10px;
+  opacity: 0.7;
+}
+.form input[type="checkbox"] {
+  width: 11px;
+  height: 11px;
+  margin: 0;
+  border: 1px solid red;
+  border-radius: 4px;
+  outline: none;
+}
+label {
+  padding: 0 1px;
+  font-size: 11px;
+}
+a {
+  text-decoration: none;
+  color: #70aa66;
+}
+.form input[type="submit"] {
+  background-color: #609966;
+  font-size: 13px;
+  color: #edf1d6;
+  margin-top: 20px;
+  border: none;
+  outline: none;
+}
+.form input[type="submit"]:hover {
+  background-color: #70aa66e6;
+  font-size: 13px;
+  border: none;
+}
+footer {
+  font-size: 12px;
+  bottom: 0;
+  margin-bottom: 20px;
+  width: 40%;
+  position: fixed;
+  text-align: center;
+}
+.color {
+  text-decoration: none;
+}
+.right {
+  margin: 0;
+  width: 60%;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("../../static/images/signup_logo.png");
+}

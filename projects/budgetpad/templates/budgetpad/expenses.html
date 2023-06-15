@@ -1,0 +1,79 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<!-- Bread crumb and right sidebar toggle -->
+<div class="row page-titles">
+  <div class="col-md-5 col-8 align-self-center">
+    <h3 class="text-themecolor m-b-0 m-t-0">Expenses</h3>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="{% url 'dashboard' %}">Home</a>
+      </li>
+      <li class="breadcrumb-item active">My Expense</li>
+    </ol>
+  </div>
+  <div class="col-md-7 col-4 align-self-center">
+    <a
+      href="{% url 'addexpense' %}"
+      class="btn waves-effect waves-light btn-danger pull-right hidden-sm-down"
+      >Add Expense</a
+    >
+  </div>
+</div>
+<!--====== Page Content ====== -->
+<div class="row">
+  <!-- column -->
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card expense">
+        <div class="card-block">
+          <h4 class="card-title">Expenses</h4>
+          <h6 class="card-subtitle">Track your expenses here</h6>
+          <div class="table-responsive">
+            <form action="{% url 'expenses' %}" method="get" class="d-inline-block">
+              Sort by:
+              <select name="sort_by" id="sort-by-select" onchange="this.form.submit()">
+                <option value="due_date" {% if sort_by == 'due_date' %}selected{% endif %}>Due Date</option>
+                <option value="category" {% if sort_by == 'category' %}selected{% endif %}>Category</option>
+              </select>
+            </form>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Date</th>
+                  <th>Expense Name</th>
+                  <th>Amount</th>
+                  <th>Due Date</th>
+                  <th>Category</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for expense in page_obj %}
+                <tr>
+                  <td>{{ forloop.counter }}</td>
+                  <td>{{ expense.date }}</td>
+                  <td contenteditable="true">{{ expense.add_expense }}</td>
+                  <td contenteditable="true">{{ expense.amount }}</td>
+                  <td contenteditable="true">{{ expense.due_date }}</td>
+                  <td contenteditable="true">{{ expense.category }}</td>
+                  <td>
+                    <a href="{% url 'expense_edit' expense.id %}">Edit</a>
+                    <a href="{% url 'expense_delete' expense.id %}">Delete</a>
+                </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          {% if page_obj.has_previous %}
+          <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+          {% endif %}
+          <span class="current-page">{{ page_obj.number }}</span>
+          {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}">next</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock%}

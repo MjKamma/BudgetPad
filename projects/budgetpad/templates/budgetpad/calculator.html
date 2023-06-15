@@ -1,0 +1,55 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<!-- Bread crumb and right sidebar toggle -->
+<div class="row page-titles">
+  <div class="col-md-5 col-8 align-self-center">
+    <h3 class="text-themecolor m-b-0 m-t-0">Calculator</h3>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="javascript:void(0)">Home</a>
+      </li>
+      <li class="breadcrumb-item active">Calculator</li>
+    </ol>
+  </div>
+  <div class="col-md-7 col-4 align-self-center">
+    <a
+      href="{% url 'expenses' %}"
+      class="btn waves-effect waves-light btn-danger pull-right hidden-sm-down"
+      >View Expenses</a
+    >
+  </div>
+  <!--====== Page Content ====== -->
+  <div class="row">
+    <!-- column -->
+    <div class="col-lg-12">
+      <div class="card expense">
+        <div class="card-block">
+          <h4 class="card-title">Calculator</h4>
+          <div class="calctr">
+            <input class="input" type="text" placeholder="0" />
+            <button onclick="clears()">C</button>
+            <button onclick="del()">DEL</button>
+            <button onclick="calc('%')">%</button>
+            <button onclick="calc('/')">/</button>
+            <button onclick="calc(7)">7</button>
+            <button onclick="calc(8)">8</button>
+            <button onclick="calc(9)">9</button>
+            <button onclick="calc('*')">*</button>
+            <button onclick="calc(4)">4</button>
+            <button onclick="calc(5)">5</button>
+            <button onclick="calc(6)">6</button>
+            <button onclick="calc('-')">-</button>
+            <button onclick="calc(1)">1</button>
+            <button onclick="calc(2)">2</button>
+            <button onclick="calc(3)">3</button>
+            <button onclick="calc('+')">+</button>
+            <button onclick="calc('.')">.</button>
+            <button onclick="calc(0)">0</button>
+            <button onclick="result('=')" class="equal">=</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

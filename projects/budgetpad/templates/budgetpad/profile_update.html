@@ -1,0 +1,146 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="row page-titles">
+  <div class="col-md-5 col-8 align-self-center">
+    <h3 class="text-themecolor m-b-0 m-t-0">Profile</h3>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="javascript:void(0)">Home</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a href="{% url 'profile' %}">Profile</a>
+      </li>
+      <li class="breadcrumb-item active">Update</li>
+    </ol>
+  </div>
+  <div class="col-md-7 col-4 align-self-center">
+    <a
+      href="{% url 'profile' %}"
+      class="btn waves-effect waves-light btn-danger pull-right hidden-sm-down"
+      >View Profile</a
+    >
+  </div>
+</div>
+<!-- ====== Page Content ===== -->
+<div class="row">
+  <div class="col-lg-4 col-xlg-3 col-md-5">
+    <div class="card">
+      <div class="card-block">
+        <center class="m-t-30">
+          <img
+            src="{% static '/images/users/MyProfile.JPG' %}"
+            class="img-circle"
+            width="150"
+          />
+          <h4 class="card-title m-t-10">@Charly</h4>
+          <h6 class="card-subtitle">Student</h6>
+        </center>
+      </div>
+    </div>
+  </div>
+  <!-- display error message-->
+  {% if messages %}
+  <ul class="messages">
+    {% for messages in messages %}
+    <li>
+      {% if message.tags %} class="{{ message.tags }}"{% endif %}{{ message }}
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  <div class="col-lg-8 col-xlg-9 col-md-7">
+    <div class="card">
+      <div class="card-block">
+        <h2>Edit Profile</h2>
+        <form
+          class="form-horizontal form-material"
+          method="POST"
+          action="{% url 'profile_update' %}"
+          id="update-form"
+        >
+          {% csrf_token %} {{form.as_p }}
+          <!--{{ form.non_field_errors }}
+          <div class="form-group">
+            {{ form.first_name.label_tag }} {{ form.first_name }}
+            {{
+            form.first_name.errors }}
+            <label class="col-md-12">First Name</label>
+            <div class="col-md-12">
+              {{ form.first_name }}
+              <input
+                type="text"
+                name="fname"
+                placeholder="Charly"
+                class="form-control form-control-line"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            {{ form.last_name.label_tag }} {{ form.last_name }}
+            {{
+            form.last_name.errors }}
+            <label class="col-md-12">Last Name</label>
+            <div class="col-md-12">
+              {{ form.last_name }}
+              <input
+                type="text"
+                name="lname"
+                placeholder="Doe"
+                class="form-control form-control-line"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            {{ form.profession.label_tag }} {{ form.profession }}
+            {{
+            form.profession.errors }}
+            <label class="col-md-12">Profession</label>
+            <div class="col-md-12">
+              <select
+                name="{{ form.profession.name }}"
+                class="form-control form-control-line"
+                required
+              >
+                <option>Employee</option>
+                <option>Business</option>
+                <option>Student</option>
+                <option>Others</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            {{ form.income.label_tag }} {{ form.income }}
+            {{ form.income.errors
+            }}
+            <label class="col-md-12">Income</label>
+            <div class="col-md-12">
+              {{ form.income }}
+              <input
+                type="number"
+                name="income"
+                class="form-control form-control-line"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-12">-->
+          <button type="submit" onclick="submitForm()" class="btn btn-success">
+            Update Profile
+          </button>
+          <!--</div>
+          </div>-->
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function submitForm() {
+    document.getElementById("update-form").submit();
+  }
+</script>
+
+{% endblock %}

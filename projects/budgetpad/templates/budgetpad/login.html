@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>BudgetPad - Welcome back!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="{% static '/styles/login.css' %}"
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+    />
+  </head>
+  <body>
+    <div class="left">
+      <div class="logo">
+        <a href="#"
+          ><img src="{% static 'images/logo/apple-touch-icon1.png' %}" alt="#"
+        /></a>
+      </div>
+      <h1>Welcome Back</h1>
+      <p class="center">Welcome back! Please enter your details.</p>
+
+      <form class="form" method="post" action="{% url 'login' %}">
+        {% csrf_token %} {% if messages %} {% for message in messages %}
+        <div class="message">{{ message }}</div>
+        {% endfor %} {% endif %}
+        <input type="text" name="loginuname" placeholder="Username" required />
+        <input type="email" name="loginemail" placeholder="Email" required />
+        <input
+          type="password"
+          name="loginpass1"
+          placeholder="Password"
+          required
+        />
+        <input type="checkbox" id="loginbox" />
+        <label for="loginbox">Remember me. </label>
+
+        <input type="submit" value="Sign In" />
+      </form>
+      <footer>
+        Don't have an account?
+        <a class="color active" href="{% url 'register' %}">Register Here</a>
+      </footer>
+    </div>
+    <div class="right"></div>
+  </body>
+</html>

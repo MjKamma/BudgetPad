@@ -1,0 +1,405 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>BudgetPad - Expense Tracking and Budget app</title>
+    <!-- Favicon -->
+    <link
+      href="{% static '/images/logo/favicon.ico' %}"
+      rel="stylesheet"
+      media="screen"
+    />
+    <!-- ==== CSS Files ==== -->
+    <link
+      href="{% static '/styles/style.css' %}"
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+    />
+    <!-- ===== Color CSS ====== -->
+    <link
+      href="{% static '/styles/green.css' %}"
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+    />
+    <!-- Bootstrap Core CSS -->
+    <link
+      href="{% static '/assets/plugins/bootstrap/css/bootstrap.min.css' %}"
+      rel="stylesheet"
+    />
+    <!--Page css - Morris CSS -->
+    <link
+      href="{% static '/assets/plugins/c3-master/c3.min.css' %}"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="fix-header fix-sidebar card-no-border">
+    <!--===Preloader===-->
+    <div class="preloader">
+      <svg class="circular" viewBox="25 25 50 50">
+        <circle
+          class="path"
+          cx="50"
+          cy="50"
+          r="20"
+          fill="none"
+          stroke-width="2"
+          stroke-miterlimit="10"
+        />
+      </svg>
+    </div>
+    <div id="main-wrapper">
+      <header class="topbar">
+        <nav class="navbar top-navbar navbar-toggleable-sm navbar-light">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="dashboard.html">
+              <!-- Logo icon --><b>
+                <img
+                  src="{% static 'images/logo/apple-touch-icon.png' %}"
+                  alt="dashboard"
+                  class="light-logo"
+                />
+              </b>
+              <span>
+                <img
+                  src="{% static 'images/logo/apple-touch-logo.png' %}"
+                  class="light-logo"
+                  alt="homepage"
+              /></span>
+            </a>
+          </div>
+          <div class="navbar-collapse">
+            <!--====Nav====-->
+            <ul class="navbar-nav mr-auto mt-md-0">
+              <li class="nav-item">
+                <a
+                  class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark"
+                  href="javascript:void(0)"
+                  ><i class="mdi mdi-menu"></i
+                ></a>
+              </li>
+              <li class="overview nav-item">
+                <a
+                  class="nav-link hidden-sm-down text-muted waves-effect waves-dark"
+                  href="javascript:void(0)"
+                  >Overview</a
+                >
+              </li>
+            </ul>
+            <!--==== User Profile =====-->
+            <ul class="navbar-nav my-lg-0">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle text-muted waves-effect waves-dark"
+                  href="{% url 'profile_edit' %}"
+                  ><img
+                    src="{% static '/images/users/CharlY-modified (Custom).png' %}"
+                    alt="user"
+                    class="profile-pic m-r-10"
+                  />{{ user.username }}</a
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <!--===== Left SideBar - Page Navigations-->
+      <aside class="left-sidebar">
+        <div class="scroll-sidebar">
+          <nav class="sidebar-nav">
+            <ul id="sidebarnav">
+              <li>
+                <a
+                  class="waves-effect waves-dark"
+                  href="{% url 'dashboard' %}"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-gauge"></i
+                  ><span class="hide-menu">Dashboard</span></a
+                >
+              </li>
+              <li>
+                <a
+                  class="waves-effect waves-dark"
+                  href="{% url 'profile' %}"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-account-check"></i
+                  ><span class="hide-menu">Profile</span></a
+                >
+              </li>
+              <li>
+                <a
+                  class="waves-effect waves-dark"
+                  href="{% url 'expenses' %}"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-cash-usd"></i
+                  ><span class="hide-menu">Expenses</span></a
+                >
+              </li>
+              <li>
+                <a
+                  class="waves-effect waves-dark"
+                  href="{% url 'stats' %}"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-calendar"></i
+                  ><span class="hide-menu">History</span></a
+                >
+              </li>
+              <li>
+                <a
+                  class="waves-effect waves-dark"
+                  href="{% url 'calculator' %}"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-calculator"></i
+                  ><span class="hide-menu"> Calculator</span></a
+                >
+              </li>
+              <li>
+                <a
+                  class="waves-effect waves-dark"
+                  href="{% url 'info' %}"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-book-open-variant"></i
+                  ><span class="hide-menu">About Us</span></a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <!--====Bottom links==== -->
+        <div class="sidebar-footer">
+          <a href="" class="link" data-toggle="tooltip" title="Settings"
+            ><i class="ti-settings"></i
+          ></a>
+          <a
+            href="{% url 'handleLogout' %}"
+            class="link"
+            data-toggle="tooltip"
+            title="Logout"
+            ><i class="mdi mdi-power"></i
+          ></a>
+        </div>
+      </aside>
+      <!--==== Page Wrapper =====-->
+      <div class="page-wrapper">
+        <div class="container-fluid">
+          <!-- Bread crumb and right sidebar toggle -->
+          <div class="row page-titles">
+            <div class="col-md-5 col-8 align-self-center">
+              <h3 class="text-themecolor">Hello, {{ user.username }}</h3>
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="javascript:void(0)">Home</a>
+                </li>
+                <li class="breadcrumb-item active">Dashboard</li>
+              </ol>
+            </div>
+            <div class="col-md-7 col-4 align-self-center">
+              <a
+                href="{% url 'addexpense' %}"
+                class="btn waves-effect waves-light btn-danger pull-right hidden-sm-down"
+                >Add Expense</a
+              >
+            </div>
+          </div>
+          <!-- ======= Page Content ======== -->
+          <div class="row">
+            <div class="col-lg-8 col-md-7">
+              <div class="card">
+                <div class="card-block">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="d-flex flex-wrap">
+                        <div>
+                          <h3 class="card-title">Expense Chart</h3>
+                        </div>
+                        <div class="ml-auto">
+                          <ul class="list-inline">
+                            <li>
+                              <h6 class="text-muted text-info">
+                                <i class="fa fa-circle font-10 m-r-10"></i
+                                >Expenses
+                              </h6>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="amp-pxl" style="height: 360px"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-5">
+              <div class="card">
+                <div class="card-block">
+                  <h3 class="card-title">Expenses</h3>
+                  <h6 class="card-subtitle">
+                    This is your expenses by categories
+                  </h6>
+                  <div id="visitor" style="height: 290px; width: 100%"></div>
+                </div>
+                <div>
+                  <hr class="m-t-0 m-b-0" />
+                </div>
+                <div class="card-block text-center">
+                  <ul class="list-inline m-b-0">
+                    <li>
+                      <h6 class="text-muted text-info">
+                        <i class="fa fa-circle font-10 m-r-10"></i>Groceries
+                      </h6>
+                    </li>
+                    <li>
+                      <h6 class="text-muted text-primary">
+                        <i class="fa fa-circle font-10 m-r-10"></i>Rent
+                      </h6>
+                    </li>
+                    <li>
+                      <h6 class="text-muted text-success">
+                        <i class="fa fa-circle font-10 m-r-10"></i>Electricity
+                      </h6>
+                    </li>
+                    <li>
+                      <h6 class="text-muted text-data">
+                        <i class="fa fa-circle font-10 m-r-10"></i>Data
+                      </h6>
+                    </li>
+                    <li>
+                      <h6 class="text-muted text-bolt">
+                        <i class="fa fa-circle font-10 m-r-10"></i>Bolt
+                      </h6>
+                    </li>
+                    <li>
+                      <h6 class="text-muted text-tv">
+                        <i class="fa fa-circle font-10 m-r-10"></i>TV
+                      </h6>
+                    </li>
+                    <li>
+                      <h6 class="text-muted text-others">
+                        <i class="fa fa-circle font-10 m-r-10"></i>Others
+                      </h6>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class-"row">
+          <div class="col-lg-4 col-xlg-3 col-md-5 section">
+            <!--===== Expense History =====-->
+            <div class="card expense">
+              <div class="card-block">
+                <h4 class="card-title">Expenses</h4>
+                <h6 class="card-subtitle">Sorted by categories.</h6>
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Date</th>
+                        <th>Expense</th>
+                        <th>Category</th>
+                        <th>Amount</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>03/06/2023</td>
+                        <td>MTN 80gb</td>
+                        <td>Data</td>
+                        <td>10,000 NGN</td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>01/06/2023</td>
+                        <td>Yam</td>
+                        <td>Groceries</td>
+                        <td>5,000 NGN</td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>05/06/2023</td>
+                        <td>Hair</td>
+                        <td>Others</td>
+                        <td>90,000 NGN</td>
+                      </tr>
+                      <tr>
+                        <td>4</td>
+                        <td>05/06/2023</td>
+                        <td>bolt</td>
+                        <td>Bolt</td>
+                        <td>6,800 NGN</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <!--===== Calculator=====-->
+            <div class="card expense">
+              <div class="card-block">
+                <h4 class="card-title">Calculator</h4>
+                <div class="calctr">
+                  <input class="input" type="text" placeholder="0" />
+                  <button onclick="clears()">C</button>
+                  <button onclick="del()">DEL</button>
+                  <button onclick="calc('%')">%</button>
+                  <button onclick="calc('/')">/</button>
+                  <button onclick="calc(7)">7</button>
+                  <button onclick="calc(8)">8</button>
+                  <button onclick="calc(9)">9</button>
+                  <button onclick="calc('*')">*</button>
+                  <button onclick="calc(4)">4</button>
+                  <button onclick="calc(5)">5</button>
+                  <button onclick="calc(6)">6</button>
+                  <button onclick="calc('-')">-</button>
+                  <button onclick="calc(1)">1</button>
+                  <button onclick="calc(2)">2</button>
+                  <button onclick="calc(3)">3</button>
+                  <button onclick="calc('+')">+</button>
+                  <button onclick="calc('.')">.</button>
+                  <button onclick="calc(0)">0</button>
+                  <button onclick="result('=')" class="equal">=</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ====== Footer ======== -->
+        <footer class="footer">
+          © 2023 BudgetPad WebApp by Charly, Mercy & Adam
+        </footer>
+      </div>
+    </div>
+
+    <!-- ======== JQuery ======-->
+    <script src="{% static '/assets/plugins/jquery/jquery.min.js' %}"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="{% static '/assets/plugins/bootstrap/js/tether.min.js' %}"></script>
+    <script src="{% static '/assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="{% static '/js/jquery.slimscroll.js' %}"></script>
+    <!--Wave Effects -->
+    <script src="{% static '/js/waves.js' %}"></script>
+    <!--Calculator function-->
+    <script src="{% static '/js/calc.js' %}"></script>
+    <!--Menu sidebar -->
+    <script src="{% static '/js/sidebarmenu.js' %}"></script>
+    <!--stickey kit -->
+    <script src="{% static '/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js' %}"></script>
+    <!--Custom JavaScript -->
+    <script src="{% static '/js/custom.min.js' %}"></script>
+    <!--c3 JavaScript -->
+    <script src="{% static '/assets/plugins/d3/d3.min.js' %}"></script>
+    <script src="{% static '/assets/plugins/c3-master/c3.min.js' %}"></script>
+    <!-- Chart JS -->
+    <script src="{% static '/js/dashboard1.js' %}"></script>
+  </body>
+</html>

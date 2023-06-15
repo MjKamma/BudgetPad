@@ -1,0 +1,237 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!-- INSERT ADITIONAL INFORMATION TO THE HEAD TAG HERE-->
+    {% block head %} {% endblock%}
+
+    <!-- CHANGES THE PAGE TITLE IF THE VARIABLE "title" IS PASSED BY THE VIEW -->
+    {% if title %}
+    <title>{{title}}</title>
+    {% else %}
+    <!-- USE DEFAULT TITLE TEXT IF NO VARIABLE "title" IS PASSED BY THE VIEW -->
+    <title>BudgetPad - Expense Tracking App</title>
+    {% endif %}
+
+    <!-- Favicon -->
+    <link
+      href="{% static '/images/logo/favicon.ico' %}"
+      rel="stylesheet"
+      media="screen"
+    />
+    <!-- ==== CSS Files ==== -->
+    <link
+      href="{% static '/styles/style.css' %}"
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+    />
+    <!-- ===== Color CSS ====== -->
+    <link
+      href="{% static '/styles/green.css' %}"
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+    />
+    <!-- Bootstrap Core CSS -->
+    <link
+      href="{% static '/assets/plugins/bootstrap/css/bootstrap.min.css' %}"
+      rel="stylesheet"
+    />
+    <!--Page css - Morris CSS -->
+    <link
+      href="{% static '/assets/plugins/c3-master/c3.min.css' %}"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="fix-header fix-sidebar card-no-border">
+    <!--===Preloader===-->
+    <div class="preloader">
+      <svg class="circular" viewBox="25 25 50 50">
+        <circle
+          class="path"
+          cx="50"
+          cy="50"
+          r="20"
+          fill="none"
+          stroke-width="2"
+          stroke-miterlimit="10"
+        />
+      </svg>
+    </div>
+    <div id="main-wrapper">
+      <header class="topbar">
+        <nav class="navbar top-navbar navbar-toggleable-sm navbar-light">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="dashboard.html">
+              <!-- Logo icon --><b>
+                <img
+                  src="{% static 'images/logo/apple-touch-icon.png' %}"
+                  alt="dashboard"
+                  class="light-logo"
+                />
+              </b>
+              <span>
+                <img
+                  src="{% static 'images/logo/apple-touch-logo.png' %}"
+                  class="light-logo"
+                  alt="homepage"
+              /></span>
+            </a>
+          </div>
+          <div class="navbar-collapse">
+            <!--====Nav====-->
+            <ul class="navbar-nav mr-auto mt-md-0">
+              <li class="nav-item">
+                <a
+                  class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark"
+                  href="javascript:void(0)"
+                  ><i class="mdi mdi-menu"></i
+                ></a>
+                <!--</li>
+              <li class="overview nav-item">
+                <a
+                  class="nav-link hidden-sm-down text-muted waves-effect waves-dark"
+                  href="javascript:void(0)"
+                  >Overview</a
+                >
+              </li>-->
+              </li>
+            </ul>
+
+            <!--==== User Profile =====-->
+            <ul class="navbar-nav my-lg-0">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle text-muted waves-effect waves-dark"
+                  href="{% url 'profile' %}"
+                  ><img
+                    src="{% static '/images/users/CharlY-modified (Custom).png' %}"
+                    alt="user"
+                    class="profile-pic m-r-10"
+                  />{{ user.username }}</a
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <!--===== Left SideBar - Page Navigations-->
+      <aside class="left-sidebar">
+        <div class="scroll-sidebar">
+          <nav class="sidebar-nav">
+            <ul id="sidebarnav">
+              <li>
+                <a
+                  class="waves-effect waves-dark"
+                  href="{% url 'dashboard' %}"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-gauge"></i
+                  ><span class="hide-menu">Dashboard</span></a
+                >
+              </li>
+              <li>
+                <a
+                  class="waves-effect waves-dark"
+                  href="{% url 'profile' %}"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-account-check"></i
+                  ><span class="hide-menu">Profile</span></a
+                >
+              </li>
+              <li>
+                <a
+                  class="waves-effect waves-dark"
+                  href="{% url 'expenses' %}"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-cash-usd"></i
+                  ><span class="hide-menu">Expenses</span></a
+                >
+              </li>
+              <li>
+                <a
+                  class="waves-effect waves-dark"
+                  href="{% url 'stats' %}"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-calendar"></i
+                  ><span class="hide-menu">History</span></a
+                >
+              </li>
+              <li>
+                <a
+                  class="waves-effect waves-dark"
+                  href="{% url 'calculator' %}"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-calculator"></i
+                  ><span class="hide-menu"> Calculator</span></a
+                >
+              </li>
+              <li>
+                <a
+                  class="waves-effect waves-dark"
+                  href="{% url 'info' %}"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-book-open-variant"></i
+                  ><span class="hide-menu">About Us</span></a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <!--====Bottom links==== -->
+        <div class="sidebar-footer">
+          <a href="" class="link" data-toggle="tooltip" title="Settings"
+            ><i class="ti-settings"></i
+          ></a>
+          <a
+            href="{% url 'handleLogout' %}"
+            class="link"
+            data-toggle="tooltip"
+            title="Logout"
+            ><i class="mdi mdi-power"></i
+          ></a>
+        </div>
+      </aside>
+      <!--==== Page Wrapper ===== -->
+      <div class="page-wrapper">
+        <div class="container-fluid">
+          <!-- INSERT THE CONTENT FROM SPECIFIC PAGES HERE-->
+          {% block content %} {% endblock %}
+        </div>
+        <!-- ======== Footer ========== -->
+        <footer class="footer">
+          © 2023 BudgetPad WebApp by Charly, Mercy & Adam
+        </footer>
+      </div>
+    </div>
+
+    <!-- ======== JQuery ======-->
+    <script src="{% static '/assets/plugins/jquery/jquery.min.js' %}"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="{% static '/assets/plugins/bootstrap/js/tether.min.js' %}"></script>
+    <script src="{% static '/assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="{% static '/js/jquery.slimscroll.js' %}"></script>
+    <!--Wave Effects -->
+    <script src="{% static '/js/waves.js' %}"></script>
+    <!--Calculator function-->
+    <script src="{% static '/js/calc.js' %}"></script>
+    <!--Menu sidebar -->
+    <script src="{% static '/js/sidebarmenu.js' %}"></script>
+    <!--stickey kit -->
+    <script src="{% static '/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js' %}"></script>
+    <!--Custom JavaScript -->
+    <script src="{% static '/js/custom.min.js' %}"></script>
+    <!--c3 JavaScript -->
+    <script src="{% static '/assets/plugins/d3/d3.min.js' %}"></script>
+    <script src="{% static '/assets/plugins/c3-master/c3.min.js' %}"></script>
+    <!-- Chart JS -->
+    <script src="{% static '/js/dashboard1.js' %}"></script>
+  </body>
+</html>

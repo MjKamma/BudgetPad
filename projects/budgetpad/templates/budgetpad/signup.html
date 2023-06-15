@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>BudgetPad - SignUp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="{% static '/styles/signup.css' %}"
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+    />
+  </head>
+  <body>
+    <div class="left">
+      <div class="logo">
+        <a href="#"
+          ><img src="{% static 'images/logo/apple-touch-icon1.png' %}" alt="#"
+        /></a>
+      </div>
+      <h1>Let's create your account</h1>
+      <p class="center">Sign up for BudgetPad. It is fast and 100% free.</p>
+
+      <form class="form" method="post" action="{% url 'register' %}">
+        {% csrf_token %} {% if messages %} {% for message in messages %}
+        <div class="message">{{ message }}</div>
+        {% endfor %} {% endif %}
+        <input
+          type="text"
+          name="uname"
+          required
+          placeholder="Choose a username"
+        />
+        <input
+          type="email"
+          name="email"
+          required
+          placeholder="Enter your email"
+        />
+        <input
+          type="password"
+          name="pass1"
+          required
+          placeholder="Create password"
+        />
+        <input type="password" name="pass2" placeholder="Confirm password" />
+        <input type="checkbox" id="signupbox" required />
+        <label for="signupbox"
+          >By signing up button, I have read and agreed to BudgetPadi's
+          <a href="#">Terms</a>
+          and
+          <a href="#">Privacy Policy</a></label
+        >
+
+        <input type="submit" value="Continue" />
+      </form>
+      <footer>
+        Already have an account?
+        <a class="color active" href="{% url 'login' %}">Login Here</a>
+      </footer>
+    </div>
+    <div class="right"></div>
+  </body>
+</html>

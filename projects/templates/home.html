@@ -1,0 +1,403 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BudgetPAD - Expense tracking App</title>
+    <!-- Favicon -->
+    <link
+      href="{% static '/images/logo/favicon.ico' %}"
+      rel="stylesheet"
+      media="screen"
+    />
+    <!-- === Web Font === -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Asul:300,400,500,600,700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- === ICONS Library === -->
+    <link
+      href="https://cdn.lineicons.com/1.0.1/LineIcons.min.css"
+      rel="stylesheet"
+    />
+    <!-- ==== CSS Files ==== -->
+    <link
+      href="{% static '/styles/home/style.css' %}"
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+    />
+    <link
+      href="{% static '/styles/home/reset.css' %}"
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+    />
+    <link
+      href="{% static '/styles/home/responsive.css' %}"
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+    />
+    <!-- Bootstrap -->
+    <link
+      href="{% static '/styles/home/bootstrap.css' %}"
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+    />
+    <!--=== Color template ===-->
+    <link
+      href="{% static '/styles/home/colour.css' %}"
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+    />
+    <!-- ===Owl Carousel ===-->
+    <link
+      href="{% static '/styles/home/owl-carousel.css' %}"
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+    />
+    <!-- ===Slick effect for Nav ===-->
+    <link
+      href="{% static '/styles/home/slicknav.min.css' %}"
+      rel="stylesheet"
+      media="screen"
+    />
+    <!-- ===Animation file ===-->
+    <link
+      href="{% static '/styles/home/' %}"
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+    />
+    <!-- === Icon Library === -->
+    <link
+      href="{% static '/styles/home/LineIcons.css' %}"
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+    />
+  </head>
+  <body class="js">
+    <!-- Preloader 
+    <div class="preloader">
+      <div class="preloader-spinner"></div>
+    </div> -->
+
+    <!-- BudgetPad Color Plate 
+    <div class="color-plate">
+      <a class="color-plate-icon"><i class="fa fa-cog fa-spin"></i></a>
+      <h4>BudgetPad Colors</h4>
+      <p>Here is some awesome color's available on BudgetPad Template.</p>
+      <span class="color1"></span>
+    </div> -->
+
+    <!-- === HEADER === -->
+    <header id="site-header" class="site-header">
+      <div class="header">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-2 col-md-2 col-12">
+              <!-- BudgetPad Logo -->
+              <div class="logo">
+                <a href="#"
+                  ><img
+                    src="{% static 'images/logo/apple-touch-logo.png' %}"
+                    alt="#"
+                /></a>
+              </div>
+              <div class="mobile-nav"></div>
+            </div>
+            <!-- === Nav Section === -->
+            <div class="col-lg-10 col-md-10 col-12">
+              <!-- Main Nav Menu -->
+              <div class="main-menu">
+                <nav class="navigation">
+                  <ul class="nav menu">
+                    <li><a href="#about-us">About Us</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#contact-us">Contact</a></li>
+                  </ul>
+                </nav>
+              </div>
+              <!--=== Main Nav Menu ends here ===-->
+              <a href="{% url 'register' %}" class="button">Get Started</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!--==== Hero Section ====-->
+    <section id="home" class="hero-header primary-header slider-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5 col-12">
+            <div class="hero-header-content">
+              <p>SOON TO BE #1 BUDGET APP</p>
+              <h1>Every Spending Counts. Track it.</h1>
+              <p>
+                It is time to take full control of your finances. Plan, track
+                and manage your money, all in one place. Start saving today with
+                our intuitive Budget App
+              </p>
+              <div class="button">
+                <a
+                  href="https://youtu.be/j1Vwth0B8I8"
+                  class="btn primary video-popup mfp-iframe"
+                  >View video <i class="lni-play"></i
+                ></a>
+                <a href="{% url 'register' %}" class="btn btn-secondary"
+                  >Get Started</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-7 col-12">
+            <div class="hero-header-image">
+              <img src="{% static 'images/hero-img.png' %}" alt="#" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ABOUT US Section -->
+    <section id="about-us" class="work section">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="section-title">
+              <h2>Read about our app</h2>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi
+                sint, atque natus, sapiente quidem soluta vero quaerat
+                assumenda, repudiandae quod nulla! Cum, deleniti! Excepturi
+                mollitia atque pariatur facilis officiis asperiores..
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 col-md-6 col-12">
+            <div class="single-work">
+              <div class="serial">
+                <span><i class="lni lni-home"></i></span>
+              </div>
+              <h3>Overview</h3>
+              <p>
+                BudgetPAD helps you manage your money, optimize expenses, and
+                grow savings.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-12">
+            <div class="single-work">
+              <div class="serial">
+                <span><i class="lni lni-user"></i></span>
+              </div>
+              <h3>Our Awesome Team</h3>
+              <p>
+                This web application was built and developed by Charly, Mercy
+                and Adam.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-12">
+            <div class="single-work last">
+              <div class="serial">
+                <span><i class="lni lni-link"></i></span>
+              </div>
+              <h3>Technologies</h3>
+              <p>
+                Backend: Python, Django, SQLite.
+                <br />
+                Frontend: SaaS, BootStrap, HTML5, JavaScript.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-12">
+            <div class="single-work">
+              <div class="serial">
+                <span><i class="lni lni-folder"></i></span>
+              </div>
+              <h3>Resources</h3>
+              <p>
+                Courtesy: ALX SE Foundation Program. This is a foundational
+                project
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- FEATURES Section -->
+    <section class="services-area section" id="features">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5 col-12">
+            <div class="info-text">
+              <p class="short-title">Desktop App</p>
+              <h2 class="main-title">Track Your Expenses</h2>
+              <p class="des">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint
+                incidunt nesciunt et est fugiat corrupti quidem consequuntur
+                odio tenetur dolores eligendi possimus id exercitationem optio
+                vitae, totam, eos libero hic?
+              </p>
+              <div class="button">
+                <a
+                  href="https://www.youtube.com/watch?v=BqI0Q7e4kbk"
+                  class="btn video-popup mfp-iframe"
+                  >View video <i class="lni-play"></i
+                ></a>
+                <a href="#" class="btn btn-primary">See more</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-7 col-12">
+            <div class="info-media right">
+              <img
+                src="{% static 'images/ipad-removebg-preview.png' %}"
+                alt="Desktop App"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-7 col-12">
+            <div class="info-media right">
+              <img
+                src="{% static 'images/holding-card-removebg-preview.png' %}"
+                alt="Desktop and Mobile App"
+              />
+            </div>
+          </div>
+          <div class="col-lg-5 col-12">
+            <div class="info-text">
+              <p class="short-title">Desktop App</p>
+              <h2 class="main-title">Schedule all your Recurring Expenses</h2>
+              <p class="des">
+                Cover all bills on time with your income. Get informed on due
+                dates and upcoming bills. Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Nam, alias! Dolores, placeat magnam explicabo
+                totam autem quod nihil suscipit rerum, facilis assumenda tempore
+                corporis soluta perspiciatis eius similique enim nostrum.
+              </p>
+              <div class="button">
+                <a
+                  href="https://youtube.com/shorts/8l9iMDEtAAA?feature=share"
+                  class="btn video-popup mfp-iframe"
+                  >View video <i class="lni-play"></i
+                ></a>
+                <a href="#" class="btn btn-primary">See more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--Get Started Section-->
+    <section id="get-started" class="get-started section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 offset-lg-2 col-12">
+            <div class="inner-content">
+              <p class="small-title">Take full control of your finances</p>
+              <h1 class="main-title">Get <b>started</b> now</h1>
+              <p class="des">
+                BudgetPad helps you manage your money, optimize expenses, and
+                grow savings.
+              </p>
+              <a href="{% url 'register' %}" class="btn">Sign Up</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--== FOOTER Section ==-->
+    <section id="footer" class="section footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-3 col-12">
+            <div class="footer-logo">
+              <a href="#"
+                ><img
+                  src="{% static 'images/logo/apple-touch-logo.png' %}"
+                  alt="#"
+              /></a>
+            </div>
+            <div class="contact-info">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Voluptatum nihil magnam esse quo cupiditate, perspiciatis amet
+                minima veniam veritatis in maxime inventore.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-12">
+            <div class="single-footer f-link">
+              <h5>Quick menu</h5>
+              <ul>
+                <li><a href="#about-us">About Us</a></li>
+                <li><a href="#services">Features</a></li>
+                <li><a href="#contact-us">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-12">
+            <div class="single-footer f-link">
+              <h5>Featured links</h5>
+              <ul>
+                <li class="nav-item"><a href="#home">BudgetPAD</a></li>
+                <li class="nav-item"><a href="#get-started">Get Started</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-12">
+            <div class="single-footer f-contact">
+              <h5>Keep in touch</h5>
+              <div class="contact-info">
+                <p>No address for now. Lol</p>
+              </div>
+              <p>+234 814 721 9184</p>
+              <p>
+                <a href="mailto:contact@budgetpad.com">contact@BudgetPad.com</a>
+              </p>
+              <ul class="footer-social">
+                <li>
+                  <a href="#"><i class="lni lni-facebook-filled"></i></a>
+                </li>
+                <li>
+                  <a href="https://github.com/CharlyAnne/BudgetPad"
+                    ><i class="lni lni-github-original"></i
+                  ></a>
+                </li>
+                <li>
+                  <a href="https://twitter.com/Imoisiliii"
+                    ><i class="lni lni-twitter-original"></i
+                  ></a>
+                </li>
+                <li>
+                  <a href="#"><i class="lni lni-linkedin-original"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <p class="text-center copyright">
+              2023 BudgetPAD WebApp by Charly, Mercy and Adam
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
